@@ -57,12 +57,15 @@ public class PlayerMotor : MonoBehaviour
         Debug.Log("Inside collision detection.");
         if(other.CompareTag("wall"))
         {
+
             Debug.Log("Game Over");
             transform.gameObject.SetActive(false);
-            for (int i = 0; i < 10; i++)
+            for (int i = 0; i < 100; i++)
             {
-
-            Instantiate(playerPrefabs, transform.position, Quaternion.identity);
+                //Vector3 spawnPosition = new Vector3(Random.Range(-10f, 10f), 0f, Random.Range(-10f, 10f)); // Change the ranges to specify where you want the prefabs to spawn
+                //Quaternion spawnRotation = Quaternion.identity; // Set the rotation to identity to keep it upright
+                //Instantiate(playerPrefabs, spawnPosition, spawnRotation);
+                Instantiate(playerPrefabs, transform.position, Quaternion.identity);
             }
 
         }
