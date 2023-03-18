@@ -58,6 +58,8 @@
   <ItemGroup>
     <Compile Include="Assets\Scripts\PlayerMotor.cs" />
     <Compile Include="Assets\Scripts\CameraMotor.cs" />
+    <Compile Include="Assets\Scripts\gameOver.cs" />
+    <Compile Include="Assets\Scripts\levelCompleted.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\Trees_WorldSpace_FREE\WorldSpaceTrees_Doc.txt" />
