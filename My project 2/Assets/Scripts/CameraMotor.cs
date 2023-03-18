@@ -4,45 +4,16 @@ using UnityEngine;
 
 public class CameraMotor : MonoBehaviour
 {
-    private Transform lookAt;
-    private Vector3 startOffset;
-    private Vector3 moveVector;
+   public Transform player;
+    public float smoothSpeed = 0.4f;
+    public Vector3 offset = new Vector3(0, 2, -4);
 
-    private float transition = 0.0f;
-    private float animationDuration = 3.0f;
-    private Vector3 animationOffset = new Vector3(0, 5, 5);
-    // Start is called before the first frame update
-    void Start()
+    private void LateUpdate()
     {
-        lookAt = GameObject.FindGameObjectsWithTag("Player")[0].transform;
-        startOffset = transform.position - lookAt.position;
-        
-    }
+        Vector3 desiredPosition = player.position + offset;
+        Vector3 smoothedPosition = Vector3.Lerp(transform.position, desiredPosition, smoothSpeed);
+        transform.position = smoothedPosition;
 
-    // Update is called once per frame
-    void Update()
-    {
-        moveVector = lookAt.position + startOffset;
-
-        //x
-        moveVector.x = 0;
-
-
-        //y
-
-
-        moveVector.y = Mathf.Clamp(moveVector.y, 3, 5);
-
-        if(transition > 1.0f)
-        {
-            transform.position = lookAt.position + startOffset;
-        }
-        else
-        {
-            // animation when game starts
-            transform.position = Vector3.Lerp(moveVector + animationOffset, moveVector, transition);
-            transition += Time.deltaTime * 1 / animationDuration;
-            transform.LookAt(lookAt.position + Vector3.up);
-        }
+        transform.LookAt(player);
     }
 }
